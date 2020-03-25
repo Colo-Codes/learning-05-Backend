@@ -1,8 +1,8 @@
 function average(array) {
     var sum = 0;
-    for (var i = 0; i < array.length; i++) {
-        sum += array[i];
-    }
+    array.forEach(function(element) {
+        sum += element;
+    });
     var average = Math.round(sum / array.length);
     console.log(average);
 }
