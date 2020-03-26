@@ -1,0 +1,14 @@
+{
+  "name": "03-myassignmentapp",
+  "version": "1.0.0",
+  "description": "An assignment to create a Node.JS app.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Damian Demasi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
