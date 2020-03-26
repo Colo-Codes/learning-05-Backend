@@ -36,7 +36,7 @@ app.get('/speak/:animal', function(req, res) {
         cat: 'I hate you human',
         goldfish: '...'
     }
-    var animal = req.params.animal;
+    var animal = req.params.animal.toLowerCase();
     var sound = sounds[animal];
     res.send('The ' + animal + ' says ' + sound + '!');
     console.log('Someone requested: ' + animal);
