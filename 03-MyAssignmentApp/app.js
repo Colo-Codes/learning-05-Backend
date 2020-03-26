@@ -19,19 +19,27 @@ app.get('/', function(req, res) {
 });
 
 app.get('/speak/:animal', function(req, res) {
-    if (req.params.animal === 'pig') {
-        res.send('The pig says \'Oink!\'');
-        console.log('Someone requested: ' + req.params.animal);
-    } else if (req.params.animal === 'cow') {
-        res.send('The pig says \'Moo!\'');
-        console.log('Someone requested: ' + req.params.animal);
-    } else if (req.params.animal === 'dog') {
-        res.send('The pig says \'Woof Woof!\'');
-        console.log('Someone requested: ' + req.params.animal);
-    } else {
-        res.send('Animal not found...');
-        console.log('Someone requested: ' + req.params.animal);
+    // var sound = '';
+    // if (req.params.animal === 'pig') {
+    //     sound = 'Oink'; 
+    // } else if (req.params.animal === 'cow') {
+    //     sound = 'Moo';
+    // } else if (req.params.animal === 'dog') {
+    //     sound = 'Woof Woof';
+    // } else {
+    //     sound = 'Not found';        
+    // }
+    var sounds = {
+        pig: 'Oink',
+        cow: 'Moo',
+        dog: 'Woof Woof',
+        cat: 'I hate you human',
+        goldfish: '...'
     }
+    var animal = req.params.animal;
+    var sound = sounds[animal];
+    res.send('The ' + animal + ' says ' + sound + '!');
+    console.log('Someone requested: ' + animal);
 });
 
 app.get('/repeat/:string/:number', function(req, res) {
