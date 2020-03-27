@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="app.css">
+
+<h1>Welcome to the posts page!</h1>
+<!-- <%= postsTemplate %> -->
+<ul>
+<% postsTemplate.forEach(function(element) { %>
+    <li>Title <%= element.title %>, by <%= element.author %></li>
+<% }); %>
+</ul>
+
+
