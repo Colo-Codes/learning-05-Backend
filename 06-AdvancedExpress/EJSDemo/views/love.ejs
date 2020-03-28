@@ -1,3 +1,6 @@
+<%- include("partials/header") %> <!-- No need to add the .ejs extension  -->
+<!-- <link rel="stylesheet" href="app.css"> This is included in the partial-->
+
 <h1>You fell in love with: <%= thingVariable.toUpperCase(); %></h1>
 
 <% if(thingVariable.toLowerCase() === 'rusty') { %>
@@ -7,3 +10,5 @@
 <% } %>
 
 <p>PS: This is the "love.ejs" file.</p>
+
+<%- include("partials/footer") %>

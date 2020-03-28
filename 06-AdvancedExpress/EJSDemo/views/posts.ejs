@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="app.css">
+<%- include("partials/header") %>  <!-- No need to add the .ejs extension  -->
+<!-- <link rel="stylesheet" href="app.css">  This is included in the partial -->
 
 <h1>Welcome to the posts page!</h1>
 <!-- <%= postsTemplate %> -->
@@ -8,4 +9,4 @@
 <% }); %>
 </ul>
 
-
+<%- include("partials/footer") %>
