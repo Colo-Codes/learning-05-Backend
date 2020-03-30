@@ -2,3 +2,6 @@ body {
     background: lightslategray;
     color: blue;
 }
+img {
+    width: 500px;
+}
