@@ -14,5 +14,13 @@ app.get('/', function(rew, res) {
 });
 
 app.get('/friends', function(req, res) {
-    res.render('friends');
+    var friends = ['Jon', 'Lyanna', 'Harry', 'Hermione', 'Lara', 'Ron']
+    res.render('friends', {friendsWebpage: friends});
+});
+
+app.get('/addfriend', function(req, res) {
+    res.send('You should be doing a POST request here...');
+});
+app.post('/addfriend', function(req, res) {
+    res.send('Post route!');
 });
