@@ -1,0 +1,9 @@
+<h1>Results Page</h1>
+<ul>
+    <% let titles = bodyObjectHTML['Search'].forEach((movie) => { %>
+        <li>
+            <strong><%= movie['Title'] %></strong> - <em><%= movie['Year'] %></em>
+        </li>
+    <% }) %>
+</ul>
+<a href="/">Search again!</a>
