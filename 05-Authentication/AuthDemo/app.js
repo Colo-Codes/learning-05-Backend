@@ -26,6 +26,7 @@ app.use(require('express-session')({
 // Setting up Passport
 app.use(passport.initialize());
 app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -35,14 +36,14 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 // Secret route (not RESTful) (GET)
-app.get('/secret', (req, res) => {
+app.get('/secret', isLoggedIn, (req, res) => { // isLoggedIn is our middleware function.
     res.render('secret');
 });
-// Authentication route: show sign up form (not RESTful) (GET)
+// Authentication route: Sign-Up: show sign up form (not RESTful) (GET)
 app.get('/register', (req, res) => {
     res.render('register');
 });
-// Authentication route: handling user sign up (not RESTful) (POST)
+// Authentication route: Sign-Up: handling user sign up (not RESTful) (POST)
 app.post('/register', (req, res) => {
     // res.send('Register POST route');
     // The password will be stored in the database as a 'hash' string (the 'salt' string is used to encode/decode the password).
@@ -57,8 +58,30 @@ app.post('/register', (req, res) => {
         }
     });
 });
-
+// Authentication route: Login: form (not RESTful) (GET)
+app.get('/login', (req, res) => {
+    res.render('login');
+});
+// Authentication route: Login: logic (not RESTful) (POST)
+app.post('/login', passport.authenticate('local', { // This is called 'middleware' (a code that runs before the final callback).
+        successRedirect: '/secret',
+        failureRedirect: '/login'
+    }), (req, res) => {
+});
+// Authentication route: Logout: logic (not RESTful) (GET)
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
 // Routes (end) ++++++++++++++++++++++++++++++++
+
+// Middleware function that will prevent unathenticated users to access /secret
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/login');
+}
 
 // Starting the NodeJS server
 app.listen(3000, function() {
